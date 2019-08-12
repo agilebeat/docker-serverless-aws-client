@@ -3,16 +3,17 @@ LABEL maintainer “Shiho ASA<asashiho@mail.asa.yokohama>”
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
+    apt-utils \
     libblas-dev \
-	liblapack-dev\
+    liblapack-dev\
     libatlas-base-dev \
     mecab \
     mecab-naist-jdic \
     mecab-ipadic-utf8 \
     swig \
     libmecab-dev \
-	gfortran \
-    libav-tools \
+    gfortran \
+#    libav-tools \
     python3-setuptools \
     sudo \
     curl \
@@ -25,6 +26,8 @@ RUN pip --no-cache-dir install \
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install -y nodejs
 
 RUN npm install -g serverless
+RUN npm install -g serverless-apigw-binary
+RUN npm install -g serverless-apigwy-binary
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
